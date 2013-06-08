@@ -35,7 +35,7 @@ public class FiremakingNode extends Node {
 			Task.sleep(50, 70);
 		}
 		switch (FiremakingScript.getMethod()) {
-		case BONFIRE:
+		case BONFIRES:
 			
 			SceneObject bonfire = SceneEntities.getNearest(new Filter<SceneObject>() {
 				
@@ -78,8 +78,6 @@ public class FiremakingNode extends Node {
 					}
 				}
 			}
-			break;
-		case CLASSIC:
 			break;
 		default:
 			break;

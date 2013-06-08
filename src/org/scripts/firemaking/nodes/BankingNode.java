@@ -146,7 +146,7 @@ public class BankingNode extends Node {
 				Bank.depositInventory();
 			}
 			if (Bank.getItem(FiremakingScript.getLogToBurn().getLogId()) == null) {
-				System.exit(0);
+				FiremakingScript.getInstance().shutdown();
 			} else {
 				Bank.withdraw(FiremakingScript.getLogToBurn().getLogId(), 28);
 				Task.sleep(100, 150);

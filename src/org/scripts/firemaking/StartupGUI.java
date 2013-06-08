@@ -9,7 +9,6 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -77,7 +76,7 @@ public class StartupGUI extends JFrame {
 		lblSelectLogType.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JComboBox<?> comboBox = new JComboBox();
-		comboBox.setBounds(269, 60, 58, 20);
+		comboBox.setBounds(269, 60, 83, 20);
 		contentPane.add(comboBox);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Normal", "Oak", "Willow", "Maple", "Yew", "Magic"}));
 		final JComboBox<?> comboBoxTemp = comboBox;
@@ -87,24 +86,15 @@ public class StartupGUI extends JFrame {
 		contentPane.add(lblSelectFiremakingMethod);
 		lblSelectFiremakingMethod.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JRadioButton bonfireBtn = new JRadioButton("Bonfires");
-		bonfireBtn.setBounds(239, 114, 65, 23);
-		contentPane.add(bonfireBtn);
-		bonfireBtn.setSelected(true);
-		final JRadioButton bonBtn = bonfireBtn;
-		
-		JRadioButton classicBtn = new JRadioButton("Classic");
-		classicBtn.setBounds(309, 114, 57, 23);
-		contentPane.add(classicBtn);
-		final JRadioButton classBtn = classicBtn;
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Bonfires"}));
+		comboBox_1.setBounds(244, 117, 83, 20);
+		contentPane.add(comboBox_1);
+		final JComboBox<?> comboBoxTemp2 = comboBox_1;
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FiremakingScript.setLogToBurn(comboBoxTemp.getSelectedItem().toString());
-				if (bonBtn.isSelected()) {
-					FiremakingScript.setMethod(Method.BONFIRE);
-				} else if (classBtn.isSelected()) {
-					FiremakingScript.setMethod(Method.CLASSIC);
-				}
+				FiremakingScript.setMethod(Method.getMethod(comboBoxTemp2.getSelectedItem().toString()));
 				FiremakingScript.setActive(true);
 				dispose();
 			}

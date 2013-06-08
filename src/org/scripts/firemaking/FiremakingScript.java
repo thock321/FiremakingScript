@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 
 import javax.swing.SwingUtilities;
 
+import org.powerbot.core.event.events.MessageEvent;
+import org.powerbot.core.event.listeners.MessageListener;
 import org.powerbot.core.event.listeners.PaintListener;
 import org.powerbot.core.script.ActiveScript;
 import org.powerbot.core.script.job.state.Node;
@@ -18,7 +20,7 @@ import org.powerbot.game.api.util.Random;
 import org.scripts.firemaking.nodes.*;
 
 @Manifest(authors = { "Thock321" }, description = "A firemaking script to help you train firemaking.", name = "Thock's Firemaker", version = 1.0)
-public class FiremakingScript extends ActiveScript implements PaintListener {
+public class FiremakingScript extends ActiveScript implements PaintListener, MessageListener {
 	
 	private static FiremakingScript instance;
 	
@@ -104,6 +106,11 @@ public class FiremakingScript extends ActiveScript implements PaintListener {
 	
 	public Logger getLogger() {
 		return log;
+	}
+
+	@Override
+	public void messageReceived(MessageEvent arg0) {
+		
 	}
 
 }
