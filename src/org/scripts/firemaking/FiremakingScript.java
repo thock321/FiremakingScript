@@ -19,7 +19,7 @@ import org.powerbot.game.api.methods.tab.Skills;
 import org.powerbot.game.api.util.Random;
 import org.scripts.firemaking.nodes.*;
 
-@Manifest(authors = { "Thock321" }, description = "A firemaking script to help you train firemaking.", name = "Thock's Firemaker", version = 1.0)
+@Manifest(authors = { "Thock321" }, description = "A firemaking script to help you train firemaking.", name = "Thock's Firemaker", version = 1.1)
 public class FiremakingScript extends ActiveScript implements PaintListener, MessageListener {
 	
 	private static FiremakingScript instance;
