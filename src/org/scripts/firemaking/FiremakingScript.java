@@ -24,34 +24,24 @@ public class FiremakingScript extends ActiveScript implements PaintListener, Mes
 	
 	private static FiremakingScript instance;
 	
-	private static Method method;
+	private Method method;
 	
-	public static Method getMethod() {
+	public Method getMethod() {
 		return method;
 	}
 	
-	public static void setMethod(Method method) {
-		FiremakingScript.method = method;
+	public void setMethod(Method method) {
+		this.method = method;
 	}
 	
-	private static Log logToBurn;
+	private Log logToBurn;
 	
-	public static Log getLogToBurn() {
+	public Log getLogToBurn() {
 		return logToBurn;
 	}
 	
-	public static void setLogToBurn(String logToBurn) {
-		FiremakingScript.logToBurn = new Log(logToBurn);
-	}
-	
-	private static boolean active;
-	
-	public static boolean active() {
-		return active;
-	}
-
-	public static void setActive(boolean active) {
-		FiremakingScript.active = active;
+	public void setLogToBurn(String logToBurn) {
+		this.logToBurn = new Log(logToBurn);
 	}
 	
 	private static Tree tree;

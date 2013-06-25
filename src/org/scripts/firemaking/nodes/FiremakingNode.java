@@ -20,7 +20,7 @@ public class FiremakingNode extends Node {
 
 	@Override
 	public boolean activate() {
-		return Game.isLoggedIn() && FiremakingScript.active() && Inventory.getItem(FiremakingScript.getLogToBurn().getLogId()) != null && 
+		return Game.isLoggedIn() && Inventory.getItem(FiremakingScript.getInstance().getLogToBurn().getLogId()) != null && 
 				Players.getLocal().getAnimation() == -1;
 	}
 	
@@ -34,7 +34,7 @@ public class FiremakingNode extends Node {
 			Widgets.get(640,30).interact("Minimise");
 			Task.sleep(50, 70);
 		}
-		switch (FiremakingScript.getMethod()) {
+		switch (FiremakingScript.getInstance().getMethod()) {
 		case BONFIRES:
 			
 			SceneObject bonfire = SceneEntities.getNearest(new Filter<SceneObject>() {
@@ -71,7 +71,7 @@ public class FiremakingNode extends Node {
 					Task.sleep(500, 600);
 					Paint.setState(State.ADDING_TO_BONFIRE);
 					long lastNotIdle = System.currentTimeMillis();
-					while (System.currentTimeMillis() - lastNotIdle < 2000 && Inventory.contains(FiremakingScript.getLogToBurn().getLogId())) {
+					while (System.currentTimeMillis() - lastNotIdle < 2000 && Inventory.contains(FiremakingScript.getInstance().getLogToBurn().getLogId())) {
 						if (Players.getLocal().getAnimation() != -1) {
 							lastNotIdle = System.currentTimeMillis();
 						}

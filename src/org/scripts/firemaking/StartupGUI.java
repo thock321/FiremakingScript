@@ -93,9 +93,8 @@ public class StartupGUI extends JFrame {
 		final JComboBox<?> comboBoxTemp2 = comboBox_1;
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FiremakingScript.setLogToBurn(comboBoxTemp.getSelectedItem().toString());
-				FiremakingScript.setMethod(Method.getMethod(comboBoxTemp2.getSelectedItem().toString()));
-				FiremakingScript.setActive(true);
+				FiremakingScript.getInstance().setLogToBurn(comboBoxTemp.getSelectedItem().toString());
+				FiremakingScript.getInstance().setMethod(Method.getMethod(comboBoxTemp2.getSelectedItem().toString()));
 				dispose();
 			}
 		});

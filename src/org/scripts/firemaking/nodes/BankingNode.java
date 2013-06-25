@@ -22,16 +22,16 @@ public class BankingNode extends Node {
 
 	@Override
 	public boolean activate() {
-		if (Inventory.getItems() != null && FiremakingScript.getLogToBurn().getLogId() < 1) {
+		if (Inventory.getItems() != null && FiremakingScript.getInstance().getLogToBurn().getLogId() < 1) {
 			for (Item item : Inventory.getItems()) {
-				if (item.getName().toLowerCase().contains(FiremakingScript.getLogToBurn().getLogName().toLowerCase()) && 
+				if (item.getName().toLowerCase().contains(FiremakingScript.getInstance().getLogToBurn().getLogName().toLowerCase()) && 
 						item.getName().toLowerCase().contains("log")) {
-					FiremakingScript.getLogToBurn().setLogId(item.getId());
+					FiremakingScript.getInstance().getLogToBurn().setLogId(item.getId());
 					break;
 				}
 			}
 		}
-		return FiremakingScript.getLogToBurn().getLogId() < 1 || Inventory.getItems() == null || !Inventory.contains(FiremakingScript.getLogToBurn().getLogId());
+		return FiremakingScript.getInstance().getLogToBurn().getLogId() < 1 || Inventory.getItems() == null || !Inventory.contains(FiremakingScript.getInstance().getLogToBurn().getLogId());
 	}
 	
 	private static class BankEntity {
@@ -132,11 +132,11 @@ public class BankingNode extends Node {
 				}
 			}
 		} else {
-			if (FiremakingScript.getLogToBurn().getLogId() < 1) {
+			if (FiremakingScript.getInstance().getLogToBurn().getLogId() < 1) {
 				for (Item item : Bank.getItems()) {
-					if (item.getName().toLowerCase().contains(FiremakingScript.getLogToBurn().getLogName().toLowerCase()) && 
+					if (item.getName().toLowerCase().contains(FiremakingScript.getInstance().getLogToBurn().getLogName().toLowerCase()) && 
 							item.getName().toLowerCase().contains("log")) {
-						FiremakingScript.getLogToBurn().setLogId(item.getId());
+						FiremakingScript.getInstance().getLogToBurn().setLogId(item.getId());
 						break;
 					}
 				}
@@ -145,10 +145,10 @@ public class BankingNode extends Node {
 			if (Inventory.getCount() > 0) {
 				Bank.depositInventory();
 			}
-			if (Bank.getItem(FiremakingScript.getLogToBurn().getLogId()) == null) {
+			if (Bank.getItem(FiremakingScript.getInstance().getLogToBurn().getLogId()) == null) {
 				FiremakingScript.getInstance().shutdown();
 			} else {
-				Bank.withdraw(FiremakingScript.getLogToBurn().getLogId(), 28);
+				Bank.withdraw(FiremakingScript.getInstance().getLogToBurn().getLogId(), 28);
 				Task.sleep(100, 150);
 				Paint.setState(State.CLOSING_BANK);
 				Bank.close();
